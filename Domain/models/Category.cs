@@ -1,23 +1,15 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Domain.Enums;
+using System.ComponentModel.DataAnnotations;
 
 namespace Domain.models
 {
     public record Category
     {
+        [Key]
         public int Id { get; init; }
-
+        [Required]
         public string Name { get; init; }
-
+        [Required]
         public Status Status { get; init; }
     }
-
-    public enum Status
-    {
-        Active,
-        Inactive
-    }
 }
-

@@ -22,7 +22,8 @@ namespace Infrastructure
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<Context>((options) => options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly("Infrastructure")));
+            services.AddDbContext<Context>((options) => options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection"),
+                b => b.MigrationsAssembly("Infrastructure")));
 
             services.AddControllers().AddJsonOptions(options =>
             {
