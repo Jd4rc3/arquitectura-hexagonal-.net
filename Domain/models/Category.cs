@@ -10,6 +10,6 @@ namespace Domain.models
         [Required]
         public string Name { get; init; }
         [Required]
-        public Status Status { get; init; }
+        public Status Status { get; set; }
     }
 }

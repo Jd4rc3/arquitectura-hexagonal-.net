@@ -1,4 +1,5 @@
 ﻿using Application.Gateways;
+using Domain.Enums;
 using Domain.models;
 
 namespace Application.UseCases.Categories
@@ -14,6 +15,7 @@ namespace Application.UseCases.Categories
 
         public async Task<Category> apply(Category entity)
         {
+            entity.Status = Status.Active;
             var category = await Gateway.Create(entity);
             return category;
         }

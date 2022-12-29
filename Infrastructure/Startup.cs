@@ -1,12 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 using Application.Gateways;
 using Application.UseCases.Categories;
 using Domain;
 using Infrastructure.Adapters;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure
@@ -36,6 +33,21 @@ namespace Infrastructure
             services.AddEndpointsApiExplorer();
 
             services.AddSwaggerGen();
+
+            services.AddAutoMapper(typeof(Startup));
+
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<Context>()
+                .AddDefaultTokenProviders();
+
+            services.Configure<IdentityOptions>((options) =>
+            {
+                options.Password.RequireDigit = true;
+                options.Password.RequireLowercase = true;
+                options.Password.RequireNonAlphanumeric = true;
+                options.Password.RequireUppercase = true;
+                options.Password.RequiredLength = 8;
+            });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

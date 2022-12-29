@@ -8,7 +8,7 @@ namespace Domain.Enums
 {
     public enum Status
     {
+        Inactive,
         Active,
-        Inactive
     }
 }
