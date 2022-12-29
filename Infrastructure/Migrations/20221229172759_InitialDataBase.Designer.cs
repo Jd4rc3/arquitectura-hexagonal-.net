@@ -11,8 +11,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20221229162553_initialdb")]
-    partial class initialdb
+    [Migration("20221229172759_InitialDataBase")]
+    partial class InitialDataBase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -39,7 +39,7 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users");
+                    b.ToTable("Categories");
                 });
 #pragma warning restore 612, 618
         }

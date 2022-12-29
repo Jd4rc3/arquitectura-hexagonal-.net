@@ -2,12 +2,12 @@
 using Microsoft.EntityFrameworkCore;
 
 namespace Domain;
+
 public class Context : DbContext
 {
     public Context(DbContextOptions<Context> options) : base(options)
     {
     }
 
-    public DbSet<Category> Users { get; set; }
-
+    public DbSet<Category> Categories { get; set; }
 }

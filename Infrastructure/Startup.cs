@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using Application.Gateways;
+using Application.UseCases.Categories;
 using Domain;
+using Infrastructure.Adapters;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure
@@ -11,6 +14,7 @@ namespace Infrastructure
     public class Startup
     {
         public IConfiguration Configuration { get; }
+
         public Startup(IConfiguration configuration)
         {
             this.Configuration = configuration;
@@ -25,6 +29,9 @@ namespace Infrastructure
                 options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
             });
 
+            services.AddScoped<ICategoryGateway, CategoryAdapter>();
+            services.AddScoped<CreatecategoryUseCase>();
+
             services.AddEndpointsApiExplorer();
 
             services.AddSwaggerGen();
@@ -37,6 +44,7 @@ namespace Infrastructure
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+            app.UseRouting();
 
             app.UseHttpsRedirection();
 
